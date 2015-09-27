@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# source "/welcome.sh"
+source "./welcome.sh"
 
 if [ "$1" == "master" ]; then
     echo 'starting master'
@@ -12,4 +12,4 @@ else
     exec "$@"
 fi
 
-exec "bash"
+# exec "bash"
