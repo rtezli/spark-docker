@@ -1,15 +1,17 @@
 #!/bin/bash
 
 source "./welcome.sh"
+pattern="/usr/share/spark/latest/logs/*.out"
+logs=( $pattern )
 
 if [ "$1" == "master" ]; then
     echo 'starting master'
-    $SPARK_HOME/sbin/start-master.sh
+    start-master.sh
+    `tail -f -n 100 ${logs[0]}`
 elif [ "$1" == "worker" ]; then
-    echo 'starting slave'
-    $SPARK_HOME/sbin/start-slave.sh $2
+    echo 'starting worker'
+    start-slave.sh $2
+    `tail -f -n 100 ${logs[0]}`
 else
     exec "$@"
 fi
-
-# exec "bash"
