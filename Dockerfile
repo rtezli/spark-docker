@@ -14,14 +14,12 @@ RUN apt-get update && \
     rm -rf spark-1.5.0-bin-hadoop2.6.tgz && \
     ln -s /usr/share/spark/spark-1.5.0-bin-hadoop2.6 /usr/share/spark/latest && \
     chmod +x /start.sh && \
-    chmod +x /welcome.sh 
+    chmod +x /welcome.sh
 
 ENV SPARK_HOME /usr/share/spark/latest
 ENV PATH /usr/share/spark/latest/bin:\
 /usr/share/spark/latest/sbin:\
 $PATH
-
-VOLUME ["/data"]
 
 EXPOSE 6066 7077 8080
 
